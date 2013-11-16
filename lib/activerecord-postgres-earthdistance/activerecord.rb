@@ -8,7 +8,7 @@ module ActiveRecord
       # if it does not exist
       #
       def add_earthdistance_index table_name, options = {}
-        execute "CREATE INDEX %s_earthdistance_ix ON %s USING gist (ll_to_earth(%s, %s));" %
+        execute "CREATE INDEX %s_earthdistance_ix ON %s USING gist (ll_to_earth(\"%s\", \"%s\"));" %
           [table_name, table_name, (options[:lat] || 'lat'), (options[:lng] || 'lng')]
       end
     end
